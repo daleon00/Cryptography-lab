@@ -13,7 +13,19 @@ def encrypt(text,s):
 #check the above function 
 text ="HELLO FROM THE TOP OF THE WORLD"
 s = 4
+cipher=encrypt(text, s)
 print(f"Plain-text: {text}")
 print(f"Shift-pattern:{s}")
-print(f"Cipher-text:",encrypt(text, s));
+print(f"Cipher-text:",cipher);
 
+#decryption 
+def decrypt(result, s):
+    plain = ""
+    for i in range(len(result)):
+        char = result[i]
+        if(char.isupper()):
+            plain +=chr((ord(char)-s-65)%26+65)
+        else:
+            plain +=chr((ord(char)-s-97)%26+97)
+    return plain
+print(f"plain-text-after-decryption:",decrypt(cipher, s))
